@@ -9,16 +9,22 @@
 
 def make_dict(keys, values):
 
+    newdict = {}
 
     if len(keys) > len(values):
+        for i in range(len(keys)):
+            if !values[i]:
+                newdict[keys[i]] = ""
+            else:
+                newdict[keys[i]] = values[i]
 
     if len(keys) < len(values):
+        for i in range(len(keys)):
+            if !key[i]:
+                pass
+            else:
+                newdict[keys[i]] = values[i]
 
-    for key in keys:
-    
-        
-        return {key : value}
+        return newdict
 
-if 
-
-print (make_dict('string', 2))
+print (make_dict([1,2,3,4,5], ['a','b','c','d','e','f']))

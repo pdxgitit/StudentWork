@@ -81,11 +81,10 @@ def hold_die(roll_list, choice_list, num):
                 printer(roll_list, choice_list, num, score)
         except ValueError:
             print ("Invalid input")
-        finally:
-
+#        finally:
 
 def count_holds(roll_list):
-     return 5 - roll_list.count('X')
+    return 5 - roll_list.count('X')
 
 
 def merge_dice(choice_list, new_rolls, last_rolls):

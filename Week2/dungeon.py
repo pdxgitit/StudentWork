@@ -20,36 +20,36 @@ def get_locations():
 #
 # def get_locations():
 #     monster = random.choice(CELLS)
-#     door = random.choice(CELLS)
+#     door = ra.ndom.choice(CELLS)
 #     start = random.choice(CELLS)
 #     if monster == start or monster == door or door == start:
 #         return get_locations()
 #     else:
 #         return monster, door, start
 
+# def move_player(player, move):
+#   # Get the player's current location
+#     player = start
+#
+#   # If move is LEFT, y - 1
+#   # If move is RIGHT, y + 1
+#   # If move is UP, x - 1
+#   # If move is DOWN, x + 1
+#     return player
+#
+#     ######################
+
 def move_player(player, move):
-  # Get the player's current location
     player = start
-
-  # If move is LEFT, y - 1
-  # If move is RIGHT, y + 1
-  # If move is UP, x - 1
-  # If move is DOWN, x + 1
+    if move == "LEFT":
+        player = (player[0], player[1]-1)
+    elif move == "RIGHT":
+        player = (player[0], player[1]+1)
+    elif move == "UP":
+        player = (player[0]-1, player[1])
+    elif move == "DOWN":
+        player = (player[0] =1, player[1])
     return player
-
-    ######################
-    #
-    # def move_player(player, move):
-    #     player = start
-    #     if move == "LEFT":
-    #         player = (player[0] -1, player[1])
-    #     elif move == "RIGHT":
-    #         player = (player[0] +1, player[1])
-    #     elif move == "UP":
-    #         player = (player[0], player[1] +1)
-    #     elif move == "DOWN":
-    #         player = (player[0], player[1] -1)
-    #     return player
 
 
 

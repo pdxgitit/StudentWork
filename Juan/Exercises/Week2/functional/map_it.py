@@ -8,8 +8,7 @@ def double(n):
 # of each number doubled
 
 def apply_it(func, n):
-    out = [func(i) for i in n]
-    return out
+    return [func(i) for i in n]
 
 Quibble = [1,2,3,4]
 print(apply_it(double, Quibble))

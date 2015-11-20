@@ -12,8 +12,7 @@ def is_even(n):
 # a new list of numbers that are even.
 
 def filter_it(func, lis):
-    out = [func(i)   for i in lis]
-    return out
+    return [func(i)   for i in lis]
 
 Quarble = [1,2,3,4]
 print(filter_it(is_even, Quarble))

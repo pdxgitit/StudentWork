@@ -1,6 +1,6 @@
 # write a function (called double) that takes and integer n and returns twice
 #the value of n
-not done !!!!!!
+
 def double(n):
     return n * 2
 
@@ -9,6 +9,6 @@ def double(n):
 
 num_list = [1,2,3,4,5,6,7,8,9]
 
-doubled_list = [double  for num in num_list ]
+doubled_list = [double(num)  for num in num_list ]
 
-print doubled_list
+print (doubled_list)

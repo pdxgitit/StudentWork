@@ -27,9 +27,7 @@ score_card = [
 
 t_or_b = '-----'
 side = '|'
-new_choices = []
-new_rolls = []
-score = 0
+
 
 def reset_choices():
     return ['1', '2', '3', '4', '5']
@@ -81,11 +79,10 @@ def hold_die(roll_list, choice_list, num):
                 printer(roll_list, choice_list, num, score)
         except ValueError:
             print ("Invalid input")
-        finally:
 
 
 def count_holds(roll_list):
-     return 5 - roll_list.count('X')
+    return 5 - roll_list.count('X')
 
 
 def merge_dice(choice_list, new_rolls, last_rolls):
@@ -180,21 +177,30 @@ def still_moves(score_card):
             return True
     return False
 
-while still_moves(score_card):
-    choices = reset_choices()
-    roll_1 = roller(5)
+def main():
 
-    for turn in range(3):
-        roll_2 = merge_dice(new_choices, new_rolls, roll_1)
-        printer(roll_1, choices, turn, score)
-        new_choices = hold_die(roll_1, choices, turn)
-        roll_again = count_holds(new_choices)
-        if roll_again == 0 or turn == 2:
-            break
-        new_rolls = roller(roll_again)
+    new_choices = []
+    new_rolls = []
+    score = 0
 
-    slot = available(score_card)
-    write_score(score_card, roll_2, slot)
-    score = calc_score(score_card)
+    while still_moves(score_card):
+        choices = reset_choices()
+        roll_1 = roller(5)
 
-print("Your final score is", score)
+        for turn in range(3):
+            roll_2 = merge_dice(new_choices, new_rolls, roll_1)
+            printer(roll_1, choices, turn, score)
+            new_choices = hold_die(roll_1, choices, turn)
+            roll_again = count_holds(new_choices)
+            if roll_again == 0 or turn == 2:
+                break
+            new_rolls = roller(roll_again)
+
+        slot = available(score_card)
+        write_score(score_card, roll_2, slot)
+        score = calc_score(score_card)
+
+    print("Your final score is", score)
+
+if __name__ == "__main__":
+    main()

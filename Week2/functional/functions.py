@@ -9,3 +9,7 @@ def log_and_return(func):
 
 def say_hello():
     print('Hello!')
+
+new_func = log_and_return(say_hello)
+
+new_func()

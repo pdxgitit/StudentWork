@@ -1,25 +1,40 @@
-# Test cases
-# ==========
-#
-# Inputs:
-#     (int) population = [[1, 2, 3], [2, 3, 4], [3, 2, 1]]
-#     (int) x = 0
-#     (int) y = 0
-#     (int) strength = 2
-# Output:
-#     (int) [[-1, -1, 3],
-#            [-1, 3, 4],
-#            [3, 2, 1]]
-#
-# Inputs:
-#     (int) population = [[6, 7, 2, 7, 6], [6, 3, 1, 4, 7], [0, 2, 4, 1, 10], [8, 1, 1, 4, 9], [8, 7, 4, 9, 9]]
-#     (int) x = 2
-#     (int) y = 1
-#     (int) strength = 5
-# Output:
-#     (int) [[6, 7, -1, 7, 6], [6, -1, -1, -1, 7], [-1, -1, -1, -1, 10], [8, -1, -1, -1, 9], [8, 7, -1, 9, 9]]
+# Welcome to Zombit, a game where you try to infect all the rabbits
+# Those damn rabbits are irrationally resistant to becoming zombies
+# Don't worry, we named the main function "simulate", so no actual
+# rabbits were harmed in the making of this function
+import random
 
-def answer(population, x, y, strength):
+# some variables to hold drawing peices
+r_peices = {
+    "strong" : " 0 ",
+    "weak" : " o ",
+    "infected" : " z ",
+    "patient-z" : " Z "
+}
+t_b_tile = "==="
+s_tile = "||"
+
+# function to determine the strength of your virus
+def ranstrength():
+    return random.randint(0, 10000)
+
+# function to create an unsuspecting population of rabbits
+def createpopulation():
+    columns = range(random.randint(2, 20))
+    rows = range(random.randint(2, 20))
+    print(columns)
+    print(rows)
+    rabbits = []
+    for w in columns:
+        rabbits.append([])
+        for l in rows:
+             rabbits[w].append(random.randint(0, 10000))
+    return rabbits
+
+# function to visualize the current state of your rabbit population
+
+# function to simulate the spread of your disease
+def simulate(population, x, y, strength):
     # convert starting position to a two-integer list for ease of use
     strt = [y, x]
 
@@ -67,18 +82,12 @@ def answer(population, x, y, strength):
         # call spread() for each valid direction move
         for i in dirs:
             if validate(i):
-                spread(i, popl)
+                popl = spread(i, popl)
 
         return popl
 
     # begin the spread
-    spread(strt, population)
+    population = spread(strt, population)
 
     # return a modified population array
     return population
-
-population = [[1, 2, 3], [2, 3, 4], [3, 2, 1]]
-x = 0
-y = 0
-strength = 2
-print(answer(population, x, y, strength))

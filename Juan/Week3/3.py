@@ -6,7 +6,7 @@ import random
 
 def thingy(n):
     top = n ** 2
-    size = range(0, n)
+    size = range(n)
     final = []
     for i in size:
         final.append([])
@@ -17,10 +17,8 @@ def thingy(n):
 print(thingy(3))
 
 def comprehendit(n):
-    top = n ** 2
-    top = n ** 2
     size = range(0, n)
-    final = [[random.randint(1, top) for q in size] for i in size]
+    final = [[random.randint(1, n ** 2) for q in size] for i in size]
     return final
 
 print(comprehendit(3))

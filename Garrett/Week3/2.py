@@ -9,6 +9,15 @@
 def fibGenerator():
     a, b = 0, 1
     yield 0
-    while True:
+    while a < 4000000:
         a, b = b, a + b
         yield a
+
+total = 0
+
+for x in fibGenerator():
+    if x % 2 == 0:
+        total += x
+
+print (total)
+

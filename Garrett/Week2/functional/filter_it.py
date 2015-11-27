@@ -7,8 +7,13 @@
 def is_even(n):
     if n % 2 == 0:
         return True
-
+'''
 def filter_it(func, numlist):
     return [ x for x in numlist if is_even(x) == True]
+'''
 
-print (filter_it(is_even, [1,2,3,4,5,6,7,8,9]))
+def filter_it(numlist):
+    return [ (lambda x: x % 2 == 0)(x) for x in numlist ]
+
+
+print (filter_it([1,2,3,4,5,6,7,8,9]))

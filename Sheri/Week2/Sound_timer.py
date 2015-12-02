@@ -8,13 +8,13 @@ ring = pygame.mixer.Sound("ring-sound.wav")
 def ringgg():
     ring.play()
     print("ringgg!")
-    time.sleep(10)
+    time.sleep(30)
 
 
 def ding():
     bowl.play()
     print("Ding!")
-    time.sleep(10)
+    time.sleep(30)
 
 while True:
     ding()

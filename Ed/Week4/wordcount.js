@@ -45,9 +45,10 @@ testfunction("the the the the quick brown fox jumped over the lazy dog"
 
 testfunction("My favorite word is alphabetical. Second favorite is numerical."
             , "is");
+            // TODO: SPEC. CHECK
+            // there are two correct answers. What should we expect here????
 
-testfunction("Skip's favorite word is 8763871644919669423. Second favorite is numerical.");
+testfunction("We are going to learn CSS to make websites."
+            , "to");
 
-testfunction("Ed's fourth favorite word is i18n. Thrird favorite is alphanumerical.");
-
-testfunction("Carolyn's sixth favorite word is alpha-betical. Fifth favorite is cat-wearing-a-hat.");
+// more test cases can be added here.....

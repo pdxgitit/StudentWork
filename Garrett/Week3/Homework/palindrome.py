@@ -9,3 +9,20 @@
 # "abcde" -> 1
 # "zzbaabcd" -> 4
 # "" -> 0
+
+def pali(stringA):
+    length = 0
+    stringlist = list(stringA)
+    for x in range(len(stringlist)):
+        if stringlist[x] == stringlist[x-1]:
+            length += 1
+        print ("1:", x+1)
+        print("2:", len(stringA) + 1)
+        if stringlist[x] == stringlist[x+1]:
+            length += 1
+    print (length)
+
+
+
+print (pali("aab"))
+            

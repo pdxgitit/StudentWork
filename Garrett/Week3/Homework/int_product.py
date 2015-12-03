@@ -9,3 +9,22 @@
 #
 # by calculating:
 #   [7*3*4, 1*3*4, 1*7*4, 1*7*3]
+
+alist = [1,7,3,4]
+
+def productlist(listone):
+    originallist = listone
+    newlist = []
+    for x in originallist:
+        total = 1
+        indexone = originallist.index(x)
+        for y in originallist:
+            indextwo = originallist.index(y)
+            if indexone != indextwo:
+                total *= y
+        newlist.append(total)
+
+    return newlist
+
+print (productlist(alist))
+

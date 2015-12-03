@@ -31,16 +31,12 @@ def condense_meeting_times(listone):
         #compare to other tuples
         #break tuple, and get a list range
         timerange = returnrange(x)
-        highernum = 0
         for y in listtwo:
             #if the first number is part of the range
             if y[0] in timerange:
                 #if the second 
-                if x[1] <= y[1] and highernum <= y[1]:
-                    highernum = y[1]
-                else:
-                    highernum = x[1]
-        print (x[0], highernum)
+                if x[1] =< y[1]:
+                    print (x[0], y[1])
 
 
 print (condense_meeting_times(alist))

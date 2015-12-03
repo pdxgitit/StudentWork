@@ -15,3 +15,39 @@
 #
 # [[1,2,3,4,5], [1,2,3,4,5]] # Team 2 has stronger Anchor ; "Team 2 wins!"
 # [[1,2,3,4,5], [5,4,3,2,1]] # Teams & Anchors are tied; "It's a tie!"
+
+Alist = [[1,2,3,4,5], [1,2,3,4,5]] # Team 2 has stronger Anchor ; "Team 2 wins!"
+Blist =  [[1,2,3,4,5], [5,4,3,2,1]] # Teams & Anchors are tied; "It's a tie!"
+
+def strength(team):
+    total = 0
+    for x in team:
+        total += x
+
+    return total
+
+def strongestplayer(team):
+    strongman = 0
+    for x in team:
+        if x > strongman:
+            strongman = x
+    return strongman
+
+def tugofwar(match):
+
+    if strength(match[0]) > strength(match[1]):
+        return("Team A Wins!")
+    elif strength(match[0]) < strength(match[1]):
+        return("Team B Wins!")
+
+    if strength(match[0]) == strength(match[1]):
+        if match[0][::1] > match[1][::-1]:
+            return("Tie! Team A wins due to better anchor")
+        elif match[0][::1] < match[1][::-1]:
+            return("Tie! Team B wins due to better anchor")
+        else:
+            return("Total Tie")
+
+
+print (tugofwar(Alist))
+print (tugofwar(Blist))

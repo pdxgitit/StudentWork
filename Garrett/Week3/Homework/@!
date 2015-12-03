@@ -3,18 +3,14 @@
 
 def product_of_three(alist):
     
-    #sort the list to put the highest integers at the end
+    #sort the list
     alist.sort()
 
-    #set a total for product
-    total = 1
-
-    #prune the list to only give back the last three results
+    print(alist)
+    
     for x in alist[:3:-1]:
-        total *= x
+        print(x)
 
-    return total
-
-somelist = [1,4,3,20,5,3,10]
+somelist = [1,2,3,4,5,6,10]
 
 print (product_of_three(somelist))

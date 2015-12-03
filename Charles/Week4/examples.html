@@ -4,21 +4,21 @@
 
 <head>
 
-    <title>My first web page</title>
+    <title>Welcome to Charles' javascript tastic website</title>
 
     <!-- This is a comment, by the way -->
 </head>
 
 <body>
 
-<h1>My first web page</h1>
+<h1>My first JS webpage</h1>
 
-<h2>What this is</h2>
-<p>A simple page put together using HTML. <em>I said a simple page put together using HTML.</em> A simple page put together using HTML. A simple page put together using HTML. A simple page put together using HTML. A simple page put together using HTML. A simple page put together using HTML. A simple page put together using HTML. A simple page put together using HTML.</p>
+<h2>What is this site about?</h2>
+<p>An awesome page put together with HTML and Javascript <em>An awesome page put together with HTML and Javascript</em> An awesome page put together with HTML and Javascript</p>
 
-<h2>Why this is</h2>
+<h2>What this site is about</h2>
 <ul>
-    <li>To learn HTML</li>
+    <li>To learn HTML and JS</li>
     <li>
         To show off
         <ol>
@@ -57,25 +57,27 @@
     </tr>
 </table>
 
-<h3>Some random form</h3>
-<p><strong>Note:</strong> It looks the part, but won't do a damned thing.</p>
 
-<form action="somescript.php" method="post">
 
-<p>Name:</p>
-<p><input name="name" value="Your name"></p>
+<script>
+function myFunction() {
+    var inpObj = document.getElementById("id1");
+    if (inpObj.checkValidity() == false) {
+        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+    } else {
+        document.getElementById("demo").innerHTML = "Input OK";
+    }
+}
+</script>
 
-<p>Comments: </p>
-<p><textarea rows="10" cols="20" name="comments">Your comments</textarea></p>
+<p>Enter a number and click OK:</p>
 
-<p>Are you:</p>
-<p><input type="radio" name="areyou" value="male"> Male</p>
-<p><input type="radio" name="areyou" value="female"> Female</p>
-<p><input type="radio" name="areyou" value="other" checked=""> Other</p>
+<input id="id1" type="number" min="100" max="300">
+<button onclick="myFunction()">OK</button>
 
-<p><input type="submit"></p>
+<p>If the number is less than 100 or greater than 300, an error message will be displayed.</p>
 
-</form>
+<p id="demo"></p>
 
 
 

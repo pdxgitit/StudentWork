@@ -3,3 +3,9 @@
 # enter either H or C  or P(hotter/colder/picked it) and continues guessing until
 # it has picked your number.  It should return the count of how many moves it took
 # and how wide the range was.
+
+def pick_num():
+    while True:
+        try:
+            num = input("Pick a number: ")
+            assert type(num) == int

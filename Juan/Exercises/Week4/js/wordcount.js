@@ -16,7 +16,7 @@ function most_used_word (s) {
       word_count = {"" : 0},
       muw = "";
   console.log(words);
-  for (w = 0; w < words.length; w += 1) {
+  for (var w = 0; w < words.length; w += 1) {
     if (word_count[words[w]] > 0) {
       word_count[words[w]] += 1;
     } else {
@@ -24,12 +24,12 @@ function most_used_word (s) {
     };
   };
   console.log(word_count);
-  for (w = 0; w < words.length; w += 1) {
+  for (var w = 0; w < words.length; w += 1) {
     var curr_word = word_count[words[w]];
     if (curr_word > word_count[muw]){
       muw = words[w];
-    } elseif {
-      
+    } else if () {
+
     };
   };
   return (muw);

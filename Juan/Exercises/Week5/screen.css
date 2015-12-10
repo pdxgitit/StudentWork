@@ -1,3 +1,5 @@
+
+
 .tab-links li {
     margin:0px 5px;
     float:left;
@@ -29,10 +31,7 @@ li.active a, li.active a:hover {
 }
 
 /* hide all tabs */
-.tab {
+.tab:not(.active) {
     display:none;
 }
 /* show only active tab*/
-.tab.active {
-    display:block;
-}

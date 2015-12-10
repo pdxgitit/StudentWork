@@ -3,12 +3,23 @@
   <head>
     <link rel="stylesheet" type="text/css" href="list.css">
     <meta charset="utf-8">
-    <title>Lists </title>
+    <title>To Do</title>
   </head>
   <body>
-    <ul>
-      <li class=default> Item 1 </li>
-      <li class=default> Item 2 </li>
+    <ul id = "todo_list">
+      <li class=default> Wake up </li>
+      <li class=default> Get out of bed </li>
     </ul>
+    <form>
+      <input type="test" id = "new_list_text">
+      <button onclick='hello(event);'id="add_item">
+        Add Item
+      </button>
+      <button onclick='goodbye(event);'id="remove_top_item">
+        Remove Top Item
+      </button>
+    </form>
+      <script src = "list.js">
+        </script>
   </body>
 </html>

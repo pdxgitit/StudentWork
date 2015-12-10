@@ -1,3 +1,6 @@
+ul {
+    list-style-type: square;
+}
 li.default {
   font-style: italic;
   background-color: gray;

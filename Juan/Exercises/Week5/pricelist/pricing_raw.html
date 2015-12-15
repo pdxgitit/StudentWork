@@ -12,6 +12,7 @@
         <table width="100%">
             <thead>
                 <tr>
+                    <th>Select</th>
                     <th>Material</th>
                     <th>Price</th>
                     <th>In Stock</th>
@@ -19,6 +20,9 @@
             </thead>
             <tbody id="inventory">
                 <tr>
+                    <td>
+                      <input type="checkbox" name="select_item">
+                    </td>
                     <td>Wood</td>
                     <td>$15</td>
                     <td id="woodStock" class="true">Yes</td>
@@ -26,6 +30,9 @@
             </tbody>
             <tfoot>
               <tr>
+                <td>
+                  Select
+                </td>
                 <td>
                   <input id="material" type="text" name="material" value="">
                 </td>

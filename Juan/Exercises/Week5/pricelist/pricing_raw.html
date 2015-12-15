@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Construction Pricing</title>
+    <link rel="stylesheet" href="css/red_test.css" />
+</head>
+<body>
+    <main>
+        <h1>Materials for Sale</h1>
+
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Price</th>
+                    <th>In Stock</th>
+                </tr>
+            </thead>
+            <tbody id="inventory">
+                <tr>
+                    <td>Wood</td>
+                    <td>$15</td>
+                    <td id="woodStock" class="true">Yes</td>
+                </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>
+                  <input id="material" type="text" name="material" value="">
+                </td>
+                <td>
+                  <input id="price" type="text" name="price" value="">
+                </td>
+                <td>
+                  <input id="in_stock" type="checkbox" name="in_stock" value="">
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+        <button type="button" name="add_item" id="add_inv">Add Inventory Item</button>
+        <button name="Add_Stock" id="add_stock">Add Stock</button>
+        <button name="Remove_Stock" id="remove_stock">Remove Stock</button>
+
+    </main>
+    <script type="text/javascript" src="js/pricing.js">
+
+    </script>
+</body>
+</html>

@@ -10,17 +10,22 @@ main {
 }
 
 h1 {
-    background-color: #ffcc00;
+
     padding: 35px;
     margin: 0 auto auto;
-    
+
 }
 
-.false {
-    background-color: #c00;
-    color: #fff;
+div {
+  width: 50%
+  text-align:center;
 }
 
-.true {
-    background-color: #0c0;
+#form {
+  width:auto;
+  margin: 0;
+}
+
+#button {
+  text-align: left;
 }

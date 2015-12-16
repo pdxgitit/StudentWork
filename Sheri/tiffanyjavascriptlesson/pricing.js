@@ -17,9 +17,9 @@
 //?? a global event handler.
 window.onload = function() {
     document.getElementById('add_button').onclick = addInventoryItem;
-    document.getElementById('add').onclick = //write function addStock
-    document.getElementById('remove').onclick = //write function removeStock
-  } //normally youdon't use () because it will call the function instead of asssigning it
+    document.getElementById('add').onclick = addStock;
+    document.getElementById('remove').onclick = removeStock; //write function removeStock
+  }; //normally youdon't use () because it will call the function instead of asssigning it
 //?? an empty list to use later
 var inventory = [];
 
@@ -46,7 +46,7 @@ function addInventoryItem() {
   var newer_item = new makeInventoryItem(name, price, in_stock);
   //add new object to the inventory array
   inventory.push(newer_item);
-  console.log(inventory);
+  //console.log(inventory);
 
 document.getElementById('name').value ="";
 document.getElementById("price").value = "";
@@ -61,7 +61,7 @@ document.getElementById("in_stock").checked = false;
 //make new function called updateList that re-renders html list with the current state of the inventory array
 function updateList() {
   //emmpties the HTML inventory list
-document.getElementById('inventory').innerHTML = '';
+document.getElementById('inventory').innerHTML = "";
   //loops throught the inventory array and adds each item to the html list
   for (var i = 0; i < inventory.length; i++){
     addRow(inventory[i], i);
@@ -72,7 +72,6 @@ document.getElementById('inventory').innerHTML = '';
 function addRow(newer_item, index){
   var table = document.getElementById("inventory");
   var row = table.insertRow(-1);
-  row.id = index;
   var cell0 = row.insertCell(0);
   var cell1 = row.insertCell(1);
   var cell2 = row.insertCell(2);
@@ -103,20 +102,21 @@ function addRow(newer_item, index){
 
 function addStock(){
   for (var i = 0; i < inventory.length; i++){
-    if(document.getElementsById(i).checked){
-    
+    if(document.getElementById(i).checked){
+      inventory[i].in_stock = true; //update displayed list
     }
-    //keep it on the list, if not(false), remove from list
-
   }
-  //toggle classes for add Stock button
+  updateList();
 };
 
 function removeStock(){
-  //toggle classes for remove stock button
-}
-//togle stock
-//we're going to re-do our html
+  for (var i = 0; i < inventory.length; i++){
+    if(document.getElementById(i).checked){
+        inventory[i].in_stock = false;
+    }
+  }
+  updateList();
+};
 //by adding a forth column
 //we want it to read: (check box) material Price In Stock
 

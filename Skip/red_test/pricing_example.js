@@ -23,18 +23,45 @@ window.onload = function() {
     document.getElementById("add_stock").onclick = addStock;
     document.getElementById("remove_stock").onclick = removeStock;
 };
-// deteremine which items are checked
-// determine the index of those items
+// 1 -deteremine which items are checked
+// 2 - determine the index of those items
 // update stock status of the those items
 // update the displayed list
 
+
+// determine which items are checked
+// determine the index of those items
+// update stock status of the checked items
+// update the displayed list
+
 function addStock() {
-    // for ()
+//  for(var puppy=0; puppy<8; puppy++)
+//  this "var" declares the interator
+var rws = document.getElementById("inventory").rows.length;
+
+for(var i=0; i<rws; i++) {
+    var checkbox = document.getElementById(i);
+    if (checkbox.checked === true) {
+        inventory[i].in_stock = true;
+
+  }
+}
+updatelist();
 
 }
 
 function removeStock() {
+    var rws = document.getElementById("inventory").rows.length;
 
+    for(var i=0; i<rws; i++) {
+        var checkbox = document.getElementById(i).checked;
+        if (checkbox.checked === false) {
+            inventory[i].in_stock = false;{
+
+
+            }
+}
+updatelist();
  }
 
 var inventory = [];
@@ -66,14 +93,14 @@ updatelist();
 }
 
 function updatelist() {
-    // Rerender the HTML lsit with the currrent state of the  inventroy array
+    // Rerender the HTML lsit with the current state of the  inventroy array
     // Empties the HTML inventory list
     document.getElementById("inventory").innerHTML = "";
 
     // Loops through the inventory array and adds each item to the HTML list
 
     for (var i=0; i< inventory.length; i++) {
-        addRow(inventory[i]);
+        addRow(inventory[i], i);
     }
 }
 // create a function to adds a new row with each new
@@ -86,7 +113,6 @@ function addRow(new_item, index){
     var table = document.getElementById("inventory");
     // creates new row for the table
     var row = table.insertRow(0);
-        row.id = index;
     // create first cell in the new row
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -94,7 +120,7 @@ function addRow(new_item, index){
     var cell3 = row.insertCell(2);
     // creates the 3rd cell (with its own functionality)
     var cell4 = row.insertCell(3);
-    cell1.innerHTML ="<input type='checkbox'id='" + index + "' />"
+    cell1.innerHTML ="<input type='checkbox' id='" + index + "' />"
     cell2.innerHTML = new_item.name;
     cell3.innerHTML = "$" + new_item.price;
     // cell3.innerHTML = new_item.in_stock;

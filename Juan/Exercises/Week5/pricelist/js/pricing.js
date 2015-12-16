@@ -11,6 +11,9 @@ inventory[0] = 0;
 
 window.onload = function() {
   document.getElementById('add_inv').onclick = add_new_item;
+  document.getElementById('add_stock').onclick = add_stock;
+  document.getElementById('remove_stock').onclick = remove_stock;
+  document.getElementById('remove_inv').onclick = remove_items;
 };
 
 // Unique id generator to uniquely identify list items
@@ -98,6 +101,7 @@ function add_new_item (event) {
 }
 
 // Determine which items are checked
+// returns a list of IDs
 function which_checked() {
   var all_inputs = document.getElementsByName('select_item'),
       checked_ids = [],
@@ -113,11 +117,10 @@ function which_checked() {
   return(checked_ids);
 }
 // Update in stock status for specific item
-function update_stock(item_id) {
+function update_stock(item_id, action) {
   var item_up = document.getElementById(item_id),
       in_stk = item_up.lastChild,
-      i,
-      action;
+      i;
   // check the inventory array for the item we are looking for
   for (i = 1; i < inventory.length; i++) {
     if (inventory[i].uid === item_id) {
@@ -130,7 +133,7 @@ function update_stock(item_id) {
         in_stk.classList.add('true');
       } else if (inventory[i].in_stock && action === 'remove') {
         // remove stock from the corresponding item in the inventory array
-        inventory[i].in_stock = true;
+        inventory[i].in_stock = false;
         // update html to reflect new status
         in_stk.innerText = 'No';
         in_stk.classList.remove('true');
@@ -139,15 +142,26 @@ function update_stock(item_id) {
     }
   }
 }
+
 // Event handler to remove stock
 function remove_stock(event) {
-  var selected_stock = 
+  var selected_stock = which_checked(),
+      i;
+  for (i = 0; i < selected_stock.length; i++) {
+    update_stock(selected_stock[i], 'remove');
+  };
 }
 // Event handler to add stock
+function add_stock(event) {
+  var selected_stock = which_checked(),
+      i;
+  for (i = 0; i < selected_stock.length; i++) {
+    update_stock(selected_stock[i], 'add');
+  };
+}
 
 
-
-// This function removes the an item from our list
+// This function removes the an item from our list based on an id
 function item_pop(item_id) {
   // retreive the html list for manipulation
   var inv = document.getElementById('inventory'),
@@ -161,4 +175,12 @@ function item_pop(item_id) {
       inventory.splice(i, 1);
     }
   }
+}
+// loop through selected stock and run remove function for each item
+function remove_items(event) {
+  var selected_stock = which_checked(),
+      i;
+  for (i = 0; i < selected_stock.length; i++) {
+    item_pop(selected_stock[i]);
+  };
 }

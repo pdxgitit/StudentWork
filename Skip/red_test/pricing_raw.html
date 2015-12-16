@@ -12,20 +12,24 @@
         <table width="100%">
             <thead>
                 <tr>
+                    <th>checkbox</th>
                     <th>Material</th>
                     <th>Price</th>
                     <th>In Stock</th>
                 </tr>
             </thead>
             <tbody id="inventory">
+
                 <tr>
-                    <td>Wood</td>
-                    <td>$15</td>
-                    <td id="woodStock" class="true">Yes</td>
+                    <td><input type="checkbox"/></td>
+                    <td>Corgi</td>
+                    <td>$1300</td>
+                    <td id="CorgiStock" class="true">Yes</td>
                 </tr>
             </tbody>
             <tfoot>
                  <tr>
+                    <td></td>
                     <td><input type="text" id="name" /></td>
                     <td><input type="number" id="price" /></td>
                     <td><input type="checkbox" id="in_stock" /></td>
@@ -34,8 +38,8 @@
         </table>
 ​
         <button id="add_item">Add Item</button>
-        <button>Add Stock</button>
-        <button>Remove Stock</button>
+        <button id="add_stock">Add Stock</button>
+        <button id="remove_stock">Remove Stock</button>
 ​
     </main>
 

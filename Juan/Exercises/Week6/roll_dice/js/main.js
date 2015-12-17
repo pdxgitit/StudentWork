@@ -19,7 +19,7 @@ function validator(num_rolls) {
 
 // random number generator, one roll
 function gen_roll() {
-  var roll = Math.floor(Math.random() * 5) + 1;
+  var roll = Math.floor(Math.random() * 6) + 1;
   return(roll);
 }
 

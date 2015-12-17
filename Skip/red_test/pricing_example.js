@@ -56,10 +56,10 @@ function removeStock() {
     for(var i=0; i<rws; i++) {
         var checkbox = document.getElementById(i).checked;
         if (checkbox.checked === false) {
-            inventory[i].in_stock = false;{
+            inventory[i].in_stock = false;
 
 
-            }
+    }
 }
 updatelist();
  }

@@ -5,6 +5,18 @@
 
 */
 
+// input validator
+function validator(num_rolls) {
+  // check to make sure input can be interpreted as a positive integer
+  if (parseInt(num_rolls) > 0) {
+    // everything is OK
+    return(false);
+  } else {
+    alert('Please enter a postive number.');
+    return(true);
+  }
+}
+
 // random number generator, one roll
 function gen_roll() {
   var roll = Math.floor(Math.random() * 5) + 1;
@@ -53,6 +65,10 @@ function roll_it(event) {
   var roll_results,
       // pull required number of rolls from the document, convert to int
       num_rolls = parseInt(document.getElementById('num_dice').value);
+  // check to make sure input is valid
+  if (validator(num_rolls)) {
+    return;
+  }
   // pass those rolls to the roller function and save result
   roll_results = gen_array(num_rolls);
   // pass roll results to the element generator function

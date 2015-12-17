@@ -28,11 +28,12 @@ h1 {
 
 
 /* dice area styles */
-.dice_area img {
+.dice_area {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 .die {
+  width: 5.9rem;
   display: inline-block;
 }

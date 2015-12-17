@@ -14,6 +14,7 @@ window.onload = function() {
   document.getElementById('add_stock').onclick = add_stock;
   document.getElementById('remove_stock').onclick = remove_stock;
   document.getElementById('remove_inv').onclick = remove_items;
+  document.getElementById('select_all').onclick = select_all;
 };
 
 // Unique id generator to uniquely identify list items
@@ -21,28 +22,28 @@ function id_gen() {
   inventory[0] += 1;
   return (String(inventory[0]));
 }
+// This is a constructor function for an inventory item
+function inventory_item (material, price, in_stock, uid) {
+  this.material = material;
+  this.price = price;
+  this.in_stock = parseInt(in_stock);
+  this.uid = uid;
+}
+
 // Check to make sure input cells are not empty
 function check_values() {
   if (!document.getElementById('material').value) {
     alert('Material cannot be blank.');
     return (true);
-  } else if (!document.getElementById('price').value) {
-    alert('Price cannot be blank.');
-    return (true);
   } else if (!parseInt(document.getElementById('price').value)) {
     alert('Price must be a number!');
+    return (true);
+  } else if (!parseInt(document.getElementById('in_stock').value)) {
+    alert('In stock must be a number!');
     return (true);
   }
   return (false);
 }
-// This is a constructor function for an inventory item
-function inventory_item (material, price, in_stock, uid) {
-  this.material = material;
-  this.price = price;
-  this.in_stock = in_stock;
-  this.uid = uid;
-}
-
 // This function adds an item to our list
 function add_inventory (material, price, in_stock, uid) {
   var new_item = new inventory_item (material, price, in_stock, uid);
@@ -67,12 +68,11 @@ function append_table (material, price, in_stock, uid) {
   // set up the value fields
   mat_td.innerText = material;
   pri_td.innerText = price;
-  // check whether item is in stock to determine cell contents
-  if (in_stock) {
-    ins_td.innerText = "Yes";
+  ins_td.innerText = in_stock;
+  // check whether item is in stock to determine formatting
+  if (in_stock > 0) {
     ins_td.classList.add('true');
   } else {
-    ins_td.innerText = "No";
     ins_td.classList.add('false');
   }
   // add all items to the row
@@ -87,17 +87,19 @@ function append_table (material, price, in_stock, uid) {
 function add_new_item (event) {
   var material = document.getElementById('material').value,
       price = '$' + document.getElementById('price').value,
-      in_stock = document.getElementById('in_stock').checked,
+      in_stock = document.getElementById('in_stock').value,
       uid;
+  // validate fields, exit if invalid
   if (check_values()) {
     return;
   }
   uid = id_gen();
   add_inventory(material, price, in_stock, uid);
   append_table(material, price, in_stock, uid);
+  // reset input fields
   document.getElementById('material').value = "";
   document.getElementById('price').value = "";
-  document.getElementById('in_stock').checked = false;
+  document.getElementById('in_stock').value = "";
 }
 
 // Determine which items are checked
@@ -124,26 +126,28 @@ function update_stock(item_id, action) {
   // check the inventory array for the item we are looking for
   for (i = 1; i < inventory.length; i++) {
     if (inventory[i].uid === item_id) {
-      if (!inventory[i].in_stock && action === 'add') {
+      if (action === 'add') {
         // add stock to the corresponding item in the inventory array
-        inventory[i].in_stock = true;
+        inventory[i].in_stock += 1;
         // update html to reflect new status
-        in_stk.innerText = 'Yes';
+        in_stk.innerText = inventory[i].in_stock;
         in_stk.classList.remove('false');
         in_stk.classList.add('true');
-      } else if (inventory[i].in_stock && action === 'remove') {
+      } else if (inventory[i].in_stock > 0 && action === 'remove') {
         // remove stock from the corresponding item in the inventory array
-        inventory[i].in_stock = false;
+        inventory[i].in_stock -= 1;
         // update html to reflect new status
-        in_stk.innerText = 'No';
-        in_stk.classList.remove('true');
-        in_stk.classList.add('false');
+        in_stk.innerText = inventory[i].in_stock;
+        if (!inventory[i].in_stock) {
+          in_stk.classList.remove('true');
+          in_stk.classList.add('false');
+        }
       }
     }
   }
 }
 
-// Event handler to remove stock
+// loop through selected stock and remove stock from checked items
 function remove_stock(event) {
   var selected_stock = which_checked(),
       i;
@@ -151,7 +155,7 @@ function remove_stock(event) {
     update_stock(selected_stock[i], 'remove');
   };
 }
-// Event handler to add stock
+// loop through selected stock and add stock to checked items
 function add_stock(event) {
   var selected_stock = which_checked(),
       i;
@@ -176,11 +180,28 @@ function item_pop(item_id) {
     }
   }
 }
-// loop through selected stock and run remove function for each item
+// loop through selected stock and run removal function for each item
 function remove_items(event) {
   var selected_stock = which_checked(),
       i;
   for (i = 0; i < selected_stock.length; i++) {
     item_pop(selected_stock[i]);
   };
+}
+
+// select or deselect all function
+function select_all(event) {
+  var chck_stat = document.getElementById('select_all').checked,
+      all_box = document.getElementsByName('select_item'),
+      i;
+  // look at all select item checkboxes
+  for (i = 0; i < all_box.length; i++) {
+    if (chck_stat && !all_box[i].checked) {
+      // check unchecked boxes if the select all is being checked
+      all_box[i].checked = true;
+    } else if (!chck_stat && all_box[i].checked) {
+      // uncheck checked boxes if the select all is being unchecked
+      all_box[i].checked = false;
+    }
+  }
 }

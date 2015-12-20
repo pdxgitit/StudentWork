@@ -1,3 +1,34 @@
+/**
+* Carolyn, it looks like the error you were getting says that you're trying to
+* GET a file called "undefined", which doesn't exist. Since both your HTML and
+* Javascript files are loading, I figured it must be an image file that you're
+* trying to access. But somewhere along the way, the file name didn't make it
+* into your new_roll function and ended up putting undefined into your image src
+* instead of an actual file name.
+* I changed three things:
+* - I think you meant to pass dice_one and dice_two into the new_roll function,
+*   instead of die_one and die_two. Since you're already calling x.num_showing
+*   inside new_roll, passing die_one/two (which is already the result of calling
+*   num_showing) didn't make sense.
+* - I added parentheses to every call to num_showing (e.g "num_showing()").
+*   Because it's a method, which is just a function, you have to put parentheses
+*   after the name to actually call it.
+* - I added a return statement to num_showing, so that the function actually
+*   returns the filename. Everything inside the function is destroyed when the
+*   function ends, unless you return something. A function without a return
+*   statement will return undefined! So, that was a big part of the problem.
+*
+*   Your next steps should be: find everywhere your calling a method and make
+*   sure you have parentheses after it. Does your num_showing method do what you
+*   intended? or rather, is that a good name for it? Right now it returns a
+*   different random number each time you call it. That sounds like rolling the
+*   dice to me.
+*   Everywhere you use snake_case names should be camelCase instead. Python uses
+*   snake_case_variable_names and Javascript uses camelCaseNames.
+*
+*   Document your code with comments above each function and global variable!
+*/
+
 window.onload = function() {
 };
 var dice_one = new CreateDice();

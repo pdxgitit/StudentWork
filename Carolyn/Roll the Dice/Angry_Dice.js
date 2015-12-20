@@ -17,7 +17,7 @@ var elem = document.getElementById('Save_die_two');
 
 var ellie  = document.getElementById('ROLL');
   ellie.addEventListener('click', function(){
-    new_roll(die_one, die_two);
+    new_roll(dice_one, dice_two);
   }, false);
 
 var dice = ["1.png", "2.png", "angry.png", "4.png", "5.png", "6.png"]
@@ -33,6 +33,7 @@ function CreateDice() {
         rolled_dice.push(dice[num]);
     };
     };
+    return rolled_dice[0];
   };
   this.held = false;
 };
@@ -49,12 +50,12 @@ function Save_die(x) {
 function new_roll(x, y) {
     var one = document.getElementById('dice_image_one');
     var dieimg = document.createElement('img');
-    dieimg.src = x.num_showing;
+    dieimg.src = x.num_showing();
     one.appendChild(dieimg);
 
     var two = document.getElementById('dice_image_two');
     var diceImage = document.createElement('img');
-    diceImage.src = y.num_showing;
+    diceImage.src = y.num_showing();
     two.appendChild(diceImage);
 };
 //   document.getElementById("ROLL").onclick = rollDice;
